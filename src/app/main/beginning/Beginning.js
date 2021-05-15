@@ -1,7 +1,7 @@
 import React from 'react';
-import { createMuiTheme, withStyles, makeStyles, ThemeProvider } from '@material-ui/core/styles';
+import { useHistory } from 'react-router-dom';
+import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import { green, purple } from '@material-ui/core/colors';
 
 const BootstrapButton = withStyles({
   root: {
@@ -61,14 +61,14 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const theme = createMuiTheme({
-  palette: {
-    primary: purple,
-  },
-});
-
 function Beginning () {
 	const classes = useStyles();
+
+  let history = useHistory();
+
+  const routeChange = () => {
+    history.push('/marketing/social-networks')
+  }
 
 	return (
 		<>
@@ -76,7 +76,7 @@ function Beginning () {
 	      <BootstrapButton variant="contained" color="primary" className={classes.margin}>
 	        FLUXO COMPLETO
 	      </BootstrapButton>
-	      <BootstrapButton variant="contained" color="primary" className={classes.margin}>
+	      <BootstrapButton variant="contained" color="primary" className={classes.margin} onClick={routeChange}>
 	        FLUXO MARKETING
 	      </BootstrapButton>
 	      <BootstrapButton variant="contained" color="primary" className={classes.margin}>

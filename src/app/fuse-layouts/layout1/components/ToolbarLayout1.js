@@ -1,18 +1,13 @@
-import FuseSearch from '@fuse/core/FuseSearch';
-import FuseShortcuts from '@fuse/core/FuseShortcuts';
 import AppBar from '@material-ui/core/AppBar';
 import Hidden from '@material-ui/core/Hidden';
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
-import ChatPanelToggleButton from 'app/fuse-layouts/shared-components/chatPanel/ChatPanelToggleButton';
 import NavbarMobileToggleButton from 'app/fuse-layouts/shared-components/NavbarMobileToggleButton';
-import QuickPanelToggleButton from 'app/fuse-layouts/shared-components/quickPanel/QuickPanelToggleButton';
 import UserMenu from 'app/fuse-layouts/shared-components/UserMenu';
 import clsx from 'clsx';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectToolbarTheme } from 'app/store/fuse/settingsSlice';
-import FullScreenToggle from '../../shared-components/FullScreenToggle';
 import LanguageSwitcher from '../../shared-components/LanguageSwitcher';
 
 const useStyles = makeStyles(theme => ({
@@ -42,22 +37,12 @@ function ToolbarLayout1(props) {
 
 					<div className="flex flex-1">
 						<Hidden mdDown>
-							<FuseShortcuts className="px-16" />
+				    	<img style={{width: 133, marginLeft: "2rem"}} src="assets/images/logos/logo.png" alt="logo" />
 						</Hidden>
 					</div>
 
 					<div className="flex items-center px-8">
 						<LanguageSwitcher />
-
-						<FullScreenToggle />
-
-						<FuseSearch />
-
-						<Hidden lgUp>
-							<ChatPanelToggleButton />
-						</Hidden>
-
-						<QuickPanelToggleButton />
 
 						<UserMenu />
 					</div>
