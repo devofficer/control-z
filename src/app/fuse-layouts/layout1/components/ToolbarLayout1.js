@@ -8,7 +8,11 @@ import clsx from 'clsx';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectToolbarTheme } from 'app/store/fuse/settingsSlice';
+import Button from '@material-ui/core/Button';
+import Icon from '@material-ui/core/Icon';
 import LanguageSwitcher from '../../shared-components/LanguageSwitcher';
+import SettingsButton from '../../shared-components/SettingsButton';
+import NotificationsButton from '../../shared-components/NotificationsButton';
 
 const useStyles = makeStyles(theme => ({
 	root: {}
@@ -44,7 +48,22 @@ function ToolbarLayout1(props) {
 					<div className="flex items-center px-8">
 						<LanguageSwitcher />
 
+						<SettingsButton />
+
+						<NotificationsButton />
+
 						<UserMenu />
+
+						<Button
+							component="a"
+							href="/"
+							rel="noreferrer noopener"
+							role="button"
+						>
+							<Icon className="text-24" style={{color: "red"}}>exit_to_app</Icon>
+							<span className="mx-4" style={{color: "red"}}>Go out</span>
+						</Button>
+
 					</div>
 
 					{config.navbar.display && config.navbar.position === 'right' && (

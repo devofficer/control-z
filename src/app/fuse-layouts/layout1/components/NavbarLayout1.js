@@ -42,29 +42,7 @@ function NavbarLayout1(props) {
 
 	return (
 		<div className={clsx('flex flex-col overflow-hidden h-full', classes.root, props.className)}>
-			<AppBar
-				color="primary"
-				position="static"
-				className="flex flex-row items-center flex-shrink h-48 md:h-64 min-h-48 md:min-h-64 px-12 shadow-0"
-			>
-				<div className="flex flex-1 mx-8">
-					<Logo />
-				</div>
-
-				<Hidden mdDown>
-					<NavbarFoldedToggleButton className="w-40 h-40 p-0" />
-				</Hidden>
-
-				<Hidden lgUp>
-					<NavbarMobileToggleButton className="w-40 h-40 p-0">
-						<Icon>{theme.direction === 'ltr' ? 'arrow_back' : 'arrow_forward'}"</Icon>
-					</NavbarMobileToggleButton>
-				</Hidden>
-			</AppBar>
-
 			<FuseScrollbars className={clsx(classes.content)} option={{ suppressScrollX: true }}>
-				<UserNavbarHeader />
-
 				<Navigation layout="vertical" />
 			</FuseScrollbars>
 		</div>

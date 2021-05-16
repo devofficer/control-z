@@ -51,7 +51,7 @@ function LanguageSwitcher(props) {
 
 	return (
 		<>
-			<Button className="h-40 w-64" onClick={langMenuClick}>
+			<Button className="h-40 min-w-128" onClick={langMenuClick}>
 				<img
 					className="mx-4 min-w-20"
 					src={`assets/images/flags/${currentLanguage.flag}.png`}
@@ -88,14 +88,6 @@ function LanguageSwitcher(props) {
 					</MenuItem>
 				))}
 
-				<MenuItem
-					component={Link}
-					to="/documentation/configuration/multi-language"
-					onClick={langMenuClose}
-					role="button"
-				>
-					<ListItemText primary="Learn More" />
-				</MenuItem>
 			</Popover>
 		</>
 	);
