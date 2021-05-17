@@ -32,12 +32,20 @@ function AnalyticsDashboardApp() {
 		<div className="w-full">
 
 			<FuseAnimate animation="transition.slideUpIn" delay={200}>
-				<div className="flex flex-col md:flex-row sm:p-8 container">
-					<div className="flex flex-1 flex-col min-w-0">
+					<div className="flex flex-1 flex-col min-w-0 container sm:p-8">
+						<Typography className="p-16 pb-8 text-48 font-300">
+							Panel
+						</Typography>
+
 						<FuseAnimate delay={600}>
-							<Typography className="p-16 pb-8 text-18 font-300">
-								How are your active users trending over time?
-							</Typography>
+							<div className="flex flex-col sm:flex sm:flex-row pb-32">
+								<Typography className="p-16 pb-8 text-18 font-300">
+									Unlinked Networks
+								</Typography>
+								<div className="widget flex w-full sm:w-1/3 p-16">
+									<Widget1 data={widgets.widget1} />
+								</div>
+							</div>
 						</FuseAnimate>
 
 						<div className="flex flex-col sm:flex sm:flex-row pb-32">
@@ -52,62 +60,24 @@ function AnalyticsDashboardApp() {
 							<div className="widget w-full sm:w-1/3 p-16">
 								<Widget4 data={widgets.widget4} />
 							</div>
-						</div>
 
-						<FuseAnimate delay={600}>
-							<Typography className="px-16 pb-8 text-18 font-300">
-								How many pages your users visit?
-							</Typography>
-						</FuseAnimate>
+							<div className="widget w-full sm:w-1/3 p-16">
+								<Widget5 data={widgets.widget5} />
+							</div>
+						</div>
 
 						<div className="widget w-full p-16 pb-32">
-							<Widget5 data={widgets.widget5} />
+							<Widget6 data={widgets.widget5} />
 						</div>
-
-						<FuseAnimate delay={600}>
-							<Typography className="px-16 pb-8 text-18 font-300">Where are your users?</Typography>
-						</FuseAnimate>
 
 						<div className="widget w-full p-16 pb-32">
-							<Widget6 data={widgets.widget6} />
+							<Widget7 data={widgets.widget7} />
+						</div>
+
+						<div className="widget w-full p-16 pb-32">
+							<Widget8 data={widgets.widget8} />
 						</div>
 					</div>
-
-					<div className="flex flex-wrap w-full md:w-320 pt-16">
-						<div className="mb-32 w-full sm:w-1/2 md:w-full">
-							<FuseAnimate delay={600}>
-								<Typography className="px-16 pb-8 text-18 font-300">
-									What are your top devices?
-								</Typography>
-							</FuseAnimate>
-
-							<div className="widget w-full p-16">
-								<Widget7 data={widgets.widget7} />
-							</div>
-						</div>
-
-						<div className="mb-32 w-full sm:w-1/2 md:w-full">
-							<FuseAnimate delay={600}>
-								<div className="px-16 pb-8 text-18 font-300">How are your sales?</div>
-							</FuseAnimate>
-
-							<div className="widget w-full p-16">
-								<Widget8 data={widgets.widget8} />
-							</div>
-						</div>
-
-						<div className="mb-32 w-full sm:w-1/2 md:w-full">
-							<FuseAnimate delay={600}>
-								<Typography className="px-16 pb-8 text-18 font-300 lg:pt-0">
-									What are your top campaigns?
-								</Typography>
-							</FuseAnimate>
-							<div className="widget w-full p-16">
-								<Widget9 data={widgets.widget9} />
-							</div>
-						</div>
-					</div>
-				</div>
 			</FuseAnimate>
 		</div>
 	);

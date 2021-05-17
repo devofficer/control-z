@@ -8,13 +8,17 @@ function Navigation(props) {
 	const navigation = useSelector(selectNavigation);
 
 	return (
-		<FuseNavigation
-			className={clsx('navigation', props.className)}
-			navigation={navigation}
-			layout={props.layout}
-			dense={props.dense}
-			active={props.active}
-		/>
+		<>
+			<span>Navbar Panel</span>
+
+			<FuseNavigation
+				className={clsx('navigation', props.className)}
+				navigation={navigation}
+				layout={props.layout}
+				dense={props.dense}
+				active={props.active}
+			/>
+		</>
 	);
 }
 

@@ -12,36 +12,20 @@ function Widget2(props) {
 
 	return (
 		<Card className="w-full rounded-8 shadow">
-			<div className="p-16 pb-0 flex flex-row flex-wrap items-end">
-				<div className="">
-					<Typography className="h3" color="textSecondary">
-						Conversion
-					</Typography>
-					<Typography className="text-56 font-300 leading-none mt-8">{data.conversion.value}</Typography>
+			<div className="p-16 flex flex-row flex-wrap items-end">
+				<div className="p-8 flex items-center">
+					{data.conversion.ofTarget > 0 && <Icon className="text-green text-48">arrow_upward</Icon>}
+					{data.conversion.ofTarget < 0 && <Icon className="text-red text-48">arrow_downward</Icon>}
 				</div>
 
-				<div className="py-4 text-16 flex flex-row items-center">
+				<div className="flex flex-col">
 					<div className="flex flex-row items-center">
-						{data.conversion.ofTarget > 0 && <Icon className="text-green">trending_up</Icon>}
-						{data.conversion.ofTarget < 0 && <Icon className="text-red">trending_down</Icon>}
-						<Typography className="mx-4">{data.conversion.ofTarget}%</Typography>
+						<Typography className="text-28 font-strong min-width:50">1000</Typography>
+						{data.conversion.ofTarget > 0 && <Typography className="text-green">{data.conversion.ofTarget}%</Typography>}
+						{data.conversion.ofTarget < 0 && <Typography className="text-red">{data.conversion.ofTarget}%</Typography>}
 					</div>
-					<Typography className="whitespace-nowrap">of target</Typography>
+					<Typography className="whitespace-nowrap">New followers</Typography>
 				</div>
-			</div>
-
-			<div className="h-96 w-100-p">
-				<Bar
-					data={{
-						labels: data.labels,
-						datasets: data.datasets.map(obj => ({
-							...obj,
-							borderColor: theme.palette.secondary.main,
-							backgroundColor: theme.palette.secondary.main
-						}))
-					}}
-					options={data.options}
-				/>
 			</div>
 		</Card>
 	);

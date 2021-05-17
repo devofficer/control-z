@@ -3,7 +3,7 @@ import Icon from '@material-ui/core/Icon';
 import { useTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
-import { Line } from 'react-chartjs-2';
+import { Bar } from 'react-chartjs-2';
 import _ from '@lodash';
 
 function Widget3(props) {
@@ -12,35 +12,18 @@ function Widget3(props) {
 
 	return (
 		<Card className="w-full rounded-8 shadow">
-			<div className="p-16 pb-0 flex flex-row flex-wrap items-end">
-				<div className="">
-					<Typography className="h3" color="textSecondary">
-						Impressions
-					</Typography>
-					<Typography className="text-56 font-300 leading-none mt-8">{data.impressions.value}</Typography>
+			<div className="p-16 flex flex-row flex-wrap items-end">
+				<div className="p-8 flex items-center">
+					<Icon className="text-green text-48">arrow_upward</Icon>
 				</div>
 
-				<div className="py-4 text-16 flex flex-row items-center">
+				<div className="flex flex-col">
 					<div className="flex flex-row items-center">
-						{data.impressions.ofTarget > 0 && <Icon className="text-green">trending_up</Icon>}
-						{data.impressions.ofTarget < 0 && <Icon className="text-red">trending_down</Icon>}
-						<Typography className="mx-4">{data.impressions.ofTarget}%</Typography>
+						<Typography className="text-28 font-strong min-width:50">325</Typography>
+						<Typography className="text-green">2.5%</Typography>
 					</div>
-					<Typography className="whitespace-nowrap">of target</Typography>
+					<Typography className="whitespace-nowrap">New Comments</Typography>
 				</div>
-			</div>
-
-			<div className="h-96 w-100-p">
-				<Line
-					data={{
-						labels: data.labels,
-						datasets: data.datasets.map(obj => ({
-							...obj,
-							borderColor: theme.palette.secondary.main
-						}))
-					}}
-					options={data.options}
-				/>
 			</div>
 		</Card>
 	);
