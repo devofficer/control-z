@@ -54,7 +54,7 @@ const networks = [
 	},
 ];
 
-function Widget1(props) {
+function AccountButton(props) {
 
 	const dispatch = useDispatch();
 
@@ -147,4 +147,4 @@ function Widget1(props) {
 	);
 }
 
-export default Widget1;
+export default AccountButton;

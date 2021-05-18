@@ -11,7 +11,7 @@ function Widget5(props) {
 	const data = _.merge({}, props.data);
 
 	return (
-		<Card className="w-full rounded-8 shadow">
+		<Card className="w-full rounded-10 shadow">
 			<div className="p-16 flex flex-row flex-wrap items-end">
 				<div className="p-8 flex items-center">
 					<Icon className="text-red text-48">arrow_downward</Icon>
@@ -19,10 +19,10 @@ function Widget5(props) {
 
 				<div className="flex flex-col">
 					<div className="flex flex-row items-center">
-						<Typography className="text-28 font-strong min-width:50">10</Typography>
-						<Typography className="text-red">-2.5%</Typography>
+						<Typography className="text-28 font-bold min-width:50">10</Typography>
+						<Typography className="text-red font-bold text-16">-2.5%</Typography>
 					</div>
-					<Typography className="whitespace-nowrap">They stopped liking</Typography>
+					<Typography className="whitespace-nowrap text-14">They stopped linking</Typography>
 				</div>
 			</div>
 		</Card>

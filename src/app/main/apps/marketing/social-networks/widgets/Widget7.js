@@ -19,51 +19,34 @@ function Marker(props) {
 
 function Widget7(props) {
 	return (
-		<>
-				<div className="d-flex justify-content-between">
-					<Typography className="h3 sm:h2 d-flex">Publications</Typography>
-					<Typography className="h3 sm:h2 d-flex">Upcoming publications</Typography>
-					<Typography className="h3 sm:h2 d-flex">View calendar</Typography>
-				</div>
-
-		<Card className="w-full h-384 rounded-8 shadow">
+		<Card className="w-full h-500 rounded-10 shadow">
 			<div className="px-32 py-16">
-				<div className="d-flex flex-row justify-content-between">
+				<div className="d-flex flex-row justify-content-between py-16">
 					<Typography className="h3 sm:h2 d-flex">Publications</Typography>
 					<Typography className="h3 sm:h2 d-flex">Upcoming publications</Typography>
 					<Typography className="h3 sm:h2 d-flex">View calendar</Typography>
 				</div>
-				<div className="flex flex-row h-320">
-					<Card classes="rounded-8">
-						<CardActionArea>
-			        <CardMedia
-			          className="h-200"
-			          image="/material-ui-static/images/cards/contemplative-reptile.jpg"
-			          title="Contemplative Reptile"
-			        />
-			        <CardContent>
-			          <Typography gutterBottom variant="h5" component="h2">
-			            Lizard
-			          </Typography>
-			          <Typography variant="body2" color="textSecondary" component="p">
-			            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-			            across all continents except Antarctica
-			          </Typography>
-			        </CardContent>
-			      </CardActionArea>
-			      <CardActions>
-			        <Button size="small" color="primary">
-			          Share
-			        </Button>
-			        <Button size="small" color="primary">
-			          Learn More
-			        </Button>
-			      </CardActions>
-					</Card>
+				<div className="w-full sm:w-1/3 rounded-10">
+					<img src="/material-ui-static/images/cards/contemplative-reptile.jpg" alt="pic"/>
+					<Typography className="p-16 pb-0">
+						Status:
+						<span className="text-green">Approved</span>
+          </Typography>
+          <Typography className="p-16 py-8">
+          	Social networks:
+          </Typography>
+          <div className="flex flex-row p-16 py-8">
+          	<Button style={{color: "red", borderRadius: "50%"}}>
+          		<Icon>schedule</Icon>
+          		Scheduled
+        		</Button>
+	          <Typography className="font-600 py-8">
+	          	Jan 29, 2020 at 7:30 am
+	          </Typography>
+          </div>
 				</div>
 			</div>
 		</Card>
-		</>
 	);
 }
 

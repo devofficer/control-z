@@ -12,7 +12,7 @@ const SocialNetworksConfig = {
 	},
 	routes: [
 		{
-			path: '/marketing/social-networks',
+			path: '/marketing/social/panel',
 			component: React.lazy(() => import('./SocialNetworks'))
 		}
 	]

@@ -22,7 +22,8 @@ const useStyles = makeStyles(theme => ({
 			boxShadow: `inset 0 0 0 20px ${
 				theme.palette.type === 'light' ? 'rgba(0, 0, 0, 0.37)' : 'rgba(255, 255, 255, 0.37)'
 			}`
-		}
+		},
+		backgroundColor: 'white'
 	},
 	content: {
 		overflowX: 'hidden',
@@ -32,8 +33,7 @@ const useStyles = makeStyles(theme => ({
 			'linear-gradient(rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0) 30%), linear-gradient(rgba(0, 0, 0, 0.25) 0, rgba(0, 0, 0, 0) 40%)',
 		backgroundRepeat: 'no-repeat',
 		backgroundSize: '100% 40px, 100% 10px',
-		backgroundAttachment: 'local, scroll',
-		backgroundColor: 'white'
+		backgroundAttachment: 'local, scroll'
 	}
 }));
 
@@ -44,6 +44,7 @@ function NavbarLayout1(props) {
 	return (
 		<div className={clsx('flex flex-col overflow-hidden h-full', classes.root, props.className)}>
 			<FuseScrollbars className={clsx(classes.content)} option={{ suppressScrollX: true }}>
+				<UserNavbarHeader />
 				<Navigation layout="vertical" />
 			</FuseScrollbars>
 		</div>

@@ -17,7 +17,7 @@ function Widget6(props) {
 	_.setWith(data, 'options.scales.yAxes[0].gridLines.color', fade(theme.palette.text.secondary, 0.1));
 
 	return (
-		<Card className="w-full rounded-8 shadow">
+		<Card className="w-full rounded-10 shadow">
 			<div className="relative p-24 flex flex-row items-center justify-between">
 				<div className="flex flex-col">
 					<Typography className="h3 sm:h2">New users over time</Typography>

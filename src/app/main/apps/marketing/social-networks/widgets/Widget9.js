@@ -6,7 +6,7 @@ import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import _ from '@lodash';
 
-function Widget5(props) {
+function Widget9(props) {
 	const theme = useTheme();
 	const data = _.merge({}, props.data);
 
@@ -29,4 +29,4 @@ function Widget5(props) {
 	);
 }
 
-export default React.memo(Widget5);
+export default React.memo(Widget9);

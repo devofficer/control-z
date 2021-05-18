@@ -11,7 +11,7 @@ function Widget2(props) {
 	const data = _.merge({}, props.data);
 
 	return (
-		<Card className="w-full rounded-8 shadow">
+		<Card className="w-full rounded-10 shadow">
 			<div className="p-16 flex flex-row flex-wrap items-end">
 				<div className="p-8 flex items-center">
 					{data.conversion.ofTarget > 0 && <Icon className="text-green text-48">arrow_upward</Icon>}
@@ -20,11 +20,11 @@ function Widget2(props) {
 
 				<div className="flex flex-col">
 					<div className="flex flex-row items-center">
-						<Typography className="text-28 font-strong min-width:50">1000</Typography>
-						{data.conversion.ofTarget > 0 && <Typography className="text-green">{data.conversion.ofTarget}%</Typography>}
-						{data.conversion.ofTarget < 0 && <Typography className="text-red">{data.conversion.ofTarget}%</Typography>}
+						<Typography className="text-28 font-bold">1000</Typography>
+						{data.conversion.ofTarget > 0 && <Typography className="text-green text-16 font-bold float-right">{data.conversion.ofTarget}%</Typography>}
+						{data.conversion.ofTarget < 0 && <Typography className="text-red text-16 font-bold">{data.conversion.ofTarget}%</Typography>}
 					</div>
-					<Typography className="whitespace-nowrap">New followers</Typography>
+					<Typography className="whitespace-nowrap text-14">New followers</Typography>
 				</div>
 			</div>
 		</Card>

@@ -19,22 +19,10 @@ function Marker(props) {
 
 function Widget8(props) {
 	return (
-		<>
-				<div className="d-flex justify-content-between">
-					<Typography className="h3 sm:h2 d-flex">Publications</Typography>
-					<Typography className="h3 sm:h2 d-flex">Upcoming publications</Typography>
-					<Typography className="h3 sm:h2 d-flex">View calendar</Typography>
-				</div>
-
-		<Card className="w-full h-384 rounded-8 shadow">
+		<Card className="w-full h-500 rounded-10 shadow">
 			<div className="px-32 py-16">
-				<div className="d-flex flex-row justify-content-between">
-					<Typography className="h3 sm:h2 d-flex">Publications</Typography>
-					<Typography className="h3 sm:h2 d-flex">Upcoming publications</Typography>
-					<Typography className="h3 sm:h2 d-flex">View calendar</Typography>
-				</div>
-				<div className="flex flex-row h-320">
-					<Card classes="rounded-8">
+				<div className="w-full sm:w-1/3">
+					<Card>
 						<CardActionArea>
 			        <CardMedia
 			          className="h-200"
@@ -63,7 +51,6 @@ function Widget8(props) {
 				</div>
 			</div>
 		</Card>
-		</>
 	);
 }
 

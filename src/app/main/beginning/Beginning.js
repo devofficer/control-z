@@ -67,7 +67,7 @@ function Beginning () {
   let history = useHistory();
 
   const routeChange = () => {
-    history.push('/marketing/social-networks')
+    history.push('/marketing/social/panel')
   }
 
 	return (
