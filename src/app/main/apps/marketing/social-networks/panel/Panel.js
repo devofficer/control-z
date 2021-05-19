@@ -16,7 +16,7 @@ import Widget7 from './widgets/Widget7';
 import Widget8 from './widgets/Widget8';
 import Widget9 from './widgets/Widget9';
 
-function AnalyticsDashboardApp() {
+function Panel() {
 	const dispatch = useDispatch();
 	const widgets = useSelector(selectWidgetsEntities);
 
@@ -83,4 +83,4 @@ function AnalyticsDashboardApp() {
 	);
 }
 
-export default withReducer('analyticsDashboardApp', reducer)(AnalyticsDashboardApp);
+export default withReducer('panel', reducer)(Panel);

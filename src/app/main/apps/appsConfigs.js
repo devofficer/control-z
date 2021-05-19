@@ -11,6 +11,7 @@ import NotesAppConfig from './notes/NotesAppConfig';
 import ScrumboardAppConfig from './scrumboard/ScrumboardAppConfig';
 import TodoAppConfig from './todo/TodoAppConfig';
 import SocialNetworksConfig from './marketing/social-networks/SocialNetworksConfig';
+import EmailConfig from './marketing/email/EmailConfig';
 
 const appsConfigs = [
 	AnalyticsDashboardAppConfig,
@@ -25,7 +26,8 @@ const appsConfigs = [
 	ScrumboardAppConfig,
 	AcademyAppConfig,
 	NotesAppConfig,
-	SocialNetworksConfig
+	SocialNetworksConfig,
+	EmailConfig
 ];
 
 export default appsConfigs;

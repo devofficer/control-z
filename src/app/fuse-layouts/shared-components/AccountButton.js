@@ -9,107 +9,169 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
+import _ from 'lodash';
 
+const useStyles = makeStyles(theme => ({
+	selectButton: {
+		width: 240,
+		margin: 20,
+		height: 50,
+		backgroundColor: '#FAFAFB',
+		color: 'black',
+		borderRadius: 10,
+		fontSize: 18,
+	},
+	popover: {
+	  borderRadius: 10,
+	  width: 240
+	},
+	selectItem: {
+		height: 55,
+		backgroundColor: '#FAFAFB',
+		color: 'black',
+		borderRadius: 0,
+		fontSize: 18,
+		"&:hover": {
+        backgroundColor: "#FAFAFB"
+    }
+	},
+	accountButton: {
+		marginTop: 16,
+		marginBottom: 16,
+		padding: 8,
+		color: '#A10081',
+		fontWeight: 'bold',
+		fontSize: 18,
+		width: '100%'
+	}
+}));
 
-const networks = [
+const networkBgColor = {
+	f: '#1877F2',
+	instagram: '#F00073',
+	youtube: '#FF0000',
+	twitter: '#1DA1F2',
+	tiktok: '#161722',
+	google_business: '#4285F4',
+	pinterest: '#E60023',
+	linkedin: '#2867B2'
+}
+const accounts = [
 	{
-		title: 'Facebook',
-		icon: 'f',
-		color: '#1877F2'
+		name: "Owl Store", 
+		icon: "owl",
+		color: "#91C56E",
+		networks: [
+			"f"
+		]
 	},
 	{
-		title: 'Instagram',
-		icon: 'instagram',
-		color: '#F00073'
+		name: "Owl Store Kids", 
+		icon: "owl",
+		color: "#8DD8CF",
+		networks: [
+			"f",
+			"instagram",
+			"youtube",
+			"linkedin",
+			"twitter",
+			"pinterest"
+		]
 	},
 	{
-		title: 'Youtube',
-		icon: 'youtube',
-		color: '#FF0000'
-	},
-	{
-		title: 'Twitter',
-		icon: 'twitter',
-		color: '#1DA1F2'
-	},
-	{
-		title: 'Tiktok',
-		icon: 'tiktok',
-		color: '#161722'
-	},
-	{
-		title: 'Google Business',
-		icon: 'google_business',
-		color: '#4285F4'
-	},
-	{
-		title: 'Pinterest',
-		icon: 'pinterest',
-		color: '#E60023'
-	},
-	{
-		title: 'Linkedin',
-		icon: 'linkedin',
-		color: '#2867B2'
-	},
+		name: "Owl Store Joy", 
+		icon: "owl",
+		color: "#DFA144",
+		networks: [
+			"f",
+			"instagram",
+			"youtube"
+		]
+	}
 ];
 
 function AccountButton(props) {
+	const classes = useStyles();
 
 	const dispatch = useDispatch();
 
-	const [icon, setIcon] = useState({
-		title: "Facebook", 
-		icon: "f",
-		color: "#1877F2"
+	const [account, setAccount] = useState({
+		name: "Owl Store", 
+		icon: "owl",
+		color: "#91C56E",
+		networks: [
+			"f"
+		]
 	});
 
 	const [menu, setMenu] = useState(null);
 
-	const networkMenuClick = event => {
+	const accountMenuClick = event => {
 		setMenu(event.currentTarget);
 		console.log(menu)
 	};
 
-	const networkMenuClose = () => {
+	const accountMenuClose = () => {
 		setMenu(null);
 	};
 
-	function handleNetworkChange(net) {
-		networkMenuClose();
-		setIcon({
-			title: net.title, 
-			icon: net.icon,
-			color: net.color
+	function handleAccountChange(it) {
+		accountMenuClose();
+		setAccount({
+			name: it.name, 
+			icon: it.icon,
+			color: it.color,
+			networks: it.networks
 		})
 	}
 
 	return (
 		<>
-			<Button className="h-32 min-w-240" variant="outlined" onClick={networkMenuClick}>
+			<Button className={classes.selectButton} onClick={accountMenuClick}>
 				<img
-					src={"assets/images/icons/" + icon.icon + ".svg"}
+					src={"assets/images/marketing/" + account.icon + ".png"}
 					style={{
-						backgroundColor: icon.color,
-						borderRadius: "50%",
-						width: "24px",
-						height: "24px",
-						padding: "5px"
+						backgroundColor: account.color,
+						borderRadius: 10,
+						padding: "5px",
+						position: "absolute",
+						left: 0
 					}}
-					alt={icon.title}
+					alt={account.name}
 				/>
 
-				<Typography className="mx-4 font-bold text-12" color="textSecondary">
-					{icon.title}
-				</Typography>
+				<div className="flex flex-col">
+					<Typography className="mx-4 font-bold text-12 pt-5">
+						{account.name}
+					</Typography>
+					<div className="flex flex-start pb-5">
+						{account.networks.map(it => (
+							<img
+								src={"assets/images/icons/" + it + ".svg"}
+								style={{
+									backgroundColor: networkBgColor[it],
+									borderRadius: '50%',
+									width: 15,
+									height: 15,
+									padding: 1,
+									margin: 1
+								}}
+								alt={it}
+							/>
+						))}
+						{_.times(8-account.networks.length, () => (
+							<div style={{background: '#E1E1E1', width: 15, height: 15, borderRadius: '50%', margin: 1}}></div>
+						))}
+					</div>
+				</div>
 
-				<Icon className="text-24">expand_more</Icon>
+				<Icon className="text-24 absolute right-12">expand_more</Icon>
 			</Button>
 
 			<Popover
 				open={Boolean(menu)}
 				anchorEl={menu}
-				onClose={networkMenuClose}
+				onClose={accountMenuClose}
 				anchorOrigin={{
 					vertical: 'bottom',
 					horizontal: 'center'
@@ -118,30 +180,61 @@ function AccountButton(props) {
 					vertical: 'top',
 					horizontal: 'center'
 				}}
-				classes={{
-					paper: 'py-8'
-				}}
+				classes={{paper: classes.popover}}
 			>
-				{networks.map(net => (
-					<MenuItem key={net.title} onClick={() => handleNetworkChange(net)}>
+				{accounts.map(it => (
+					<MenuItem 
+						key={it.title} 
+						onClick={() => handleAccountChange(it)}
+						className={classes.selectItem}
+					>
 						<ListItemIcon className="min-w-40">
 							<img 
 								className="min-w-20" 
-								src={`assets/images/icons/${net.icon}.svg`} 
+								src={`assets/images/marketing/${it.icon}.png`} 
 								style={{
-									backgroundColor: net.color, 
-									borderRadius: "50%",
-									width: "24px",
-									height: "24px",
+									backgroundColor: it.color, 
+									borderRadius: 10,
 									padding: "5px"
 								}} 
-								alt={net.title} 
+								alt={it.name} 
 							/>
 						</ListItemIcon>
-						<ListItemText primary={net.title} />
+						<div className="flex flex-col">
+							<Typography className="mx-4 font-bold text-12 pt-8">
+								{it.name}
+							</Typography>
+							<div className="flex flex-start">
+								{it.networks.map(it => (
+									<img
+										src={"assets/images/icons/" + it + ".svg"}
+										style={{
+											backgroundColor: networkBgColor[it],
+											borderRadius: '50%',
+											width: 15,
+											height: 15,
+											padding: 1,
+											margin: 1
+										}}
+										alt={it}
+									/>
+								))}
+								{_.times(8-it.networks.length, () => (
+									<div style={{background: '#E1E1E1', width: 15, height: 15, borderRadius: '50%', margin: 1}}></div>
+								))}
+							</div>
+						</div>
 					</MenuItem>
 				))}
-
+				<MenuItem className={classes.selectItem}>
+					<Button 
+						className={classes.accountButton} 
+						disableRipple 
+						onClick={accountMenuClose}
+					>
+						+ Add account
+					</Button>
+				</MenuItem>
 			</Popover>
 		</>
 	);

@@ -13,7 +13,27 @@ const SocialNetworksConfig = {
 	routes: [
 		{
 			path: '/marketing/social/panel',
-			component: React.lazy(() => import('./SocialNetworks'))
+			component: React.lazy(() => import('./panel/Panel'))
+		},
+		{
+			path: '/marketing/social/publications',
+			component: React.lazy(() => import('./publications/Publications'))
+		},
+		{
+			path: '/marketing/social/calendar',
+			component: React.lazy(() => import('./calendar/Calendar'))
+		},
+		{
+			path: '/marketing/social/messages',
+			component: React.lazy(() => import('./messages/Messages'))
+		},
+		{
+			path: '/marketing/social/feeds',
+			component: React.lazy(() => import('./feeds/Feeds'))
+		},
+		{
+			path: '/marketing/social/reporting',
+			component: React.lazy(() => import('./reporting/Reporting'))
 		}
 	]
 };

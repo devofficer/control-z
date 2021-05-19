@@ -10,24 +10,43 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logoutUser } from 'app/auth/store/userSlice';
+import { makeStyles } from '@material-ui/core/styles';
+import Modal from '@material-ui/core/Modal';
+import Backdrop from '@material-ui/core/Backdrop';
+import Fade from '@material-ui/core/Fade';
+
+const useStyles = makeStyles((theme) => ({
+  modal: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  paper: {
+    backgroundColor: theme.palette.background.paper,
+    border: '2px solid #000',
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+  },
+}));
 
 function UserMenu(props) {
+  const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
 	const dispatch = useDispatch();
 	const user = useSelector(({ auth }) => auth.user);
 
-	const [userMenu, setUserMenu] = useState(null);
-
-	const userMenuClick = event => {
-		setUserMenu(event.currentTarget);
-	};
-
-	const userMenuClose = () => {
-		setUserMenu(null);
-	};
-
 	return (
 		<>
-			<Button className="min-h-40 min-w-40 px-0 md:px-16 py-0 md:py-6" onClick={userMenuClick}>
+			<Button className="min-h-40 min-w-40 px-0 md:px-16 py-0 md:py-6" onClick={handleOpen}>
 				{user.data.photoURL ? (
 					<Avatar className="md:mx-4" alt="user photo" src={user.data.photoURL} />
 				) : (
@@ -41,65 +60,24 @@ function UserMenu(props) {
 				</div>
 			</Button>
 
-			<Popover
-				open={Boolean(userMenu)}
-				anchorEl={userMenu}
-				onClose={userMenuClose}
-				anchorOrigin={{
-					vertical: 'bottom',
-					horizontal: 'center'
-				}}
-				transformOrigin={{
-					vertical: 'top',
-					horizontal: 'center'
-				}}
-				classes={{
-					paper: 'py-8'
-				}}
-			>
-				{!user.role || user.role.length === 0 ? (
-					<>
-						<MenuItem component={Link} to="/login" role="button">
-							<ListItemIcon className="min-w-40">
-								<Icon>lock</Icon>
-							</ListItemIcon>
-							<ListItemText primary="Login" />
-						</MenuItem>
-						<MenuItem component={Link} to="/register" role="button">
-							<ListItemIcon className="min-w-40">
-								<Icon>person_add</Icon>
-							</ListItemIcon>
-							<ListItemText primary="Register" />
-						</MenuItem>
-					</>
-				) : (
-					<>
-						<MenuItem component={Link} to="/pages/profile" onClick={userMenuClose} role="button">
-							<ListItemIcon className="min-w-40">
-								<Icon>account_circle</Icon>
-							</ListItemIcon>
-							<ListItemText primary="My Profile" />
-						</MenuItem>
-						<MenuItem component={Link} to="/apps/mail" onClick={userMenuClose} role="button">
-							<ListItemIcon className="min-w-40">
-								<Icon>mail</Icon>
-							</ListItemIcon>
-							<ListItemText primary="Inbox" />
-						</MenuItem>
-						<MenuItem
-							onClick={() => {
-								dispatch(logoutUser());
-								userMenuClose();
-							}}
-						>
-							<ListItemIcon className="min-w-40">
-								<Icon>exit_to_app</Icon>
-							</ListItemIcon>
-							<ListItemText primary="Logout" />
-						</MenuItem>
-					</>
-				)}
-			</Popover>
+	    <Modal
+	      aria-labelledby="transition-modal-title"
+	      aria-describedby="transition-modal-description"
+	      className={classes.modal}
+	      open={open}
+	      onClose={handleClose}
+	      closeAfterTransition
+	      BackdropComponent={Backdrop}
+	      BackdropProps={{
+	        timeout: 500,
+	      }}
+	    >
+	      <Fade in={open}>
+	        <div className={classes.paper}>
+	          <h2 id="transition-modal-title">User Profile modal</h2>
+	        </div>
+	      </Fade>
+	    </Modal>
 		</>
 	);
 }

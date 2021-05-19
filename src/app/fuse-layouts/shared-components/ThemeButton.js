@@ -22,12 +22,14 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: "#ECF5FF"
     }
 	},
+	popover: {
+	  borderRadius: 0,
+	  width: 280
+	},
 	selectItem: {
-		width: '100%',
 		height: 40,
 		backgroundColor: '#ECF5FF',
 		color: '#002C5D',
-		borderRadius: 0,
 		fontSize: 18,
 		"&:hover": {
         backgroundColor: "#ECF5FF"
@@ -81,7 +83,7 @@ function ThemeButton(props) {
 		<>
 			<Button className={classes.selectButton} onClick={menuClick} disableRipple>
 				{item.title}
-				<Icon className="text-24 mr-0">expand_more</Icon>
+				<Icon className="text-24 absolute right-12">expand_more</Icon>
 			</Button>
 
 			<Popover
@@ -90,15 +92,14 @@ function ThemeButton(props) {
 				onClose={menuClose}
 				anchorOrigin={{
 					vertical: 'bottom',
-					horizontal: 'center'
+					horizontal: 'left'
 				}}
+			  marginThreshold={0}
 				transformOrigin={{
 					vertical: 'top',
-					horizontal: 'center'
+					horizontal: 'left'
 				}}
-				classes={{
-					paper: 'px-0'
-				}}
+				classes={{paper: classes.popover}}
 			>
 				{choice.map(it => (
 					<MenuItem 
