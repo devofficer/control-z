@@ -6,28 +6,41 @@ import clsx from 'clsx';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import AccountButton from './AccountButton'
+import ThemeButton from './ThemeButton'
 
 const useStyles = makeStyles(theme => ({
+	bill: {
+		padding: '24px 16px',
+		textTransform: 'uppercase',
+		fontSize: 14,
+		fontWeight: 'bold',
+		color: '#92929D',
+	},
+	networkButton: {
+		marginTop: 16,
+		marginBottom: 16,
+		padding: 8,
+		color: '#A10081',
+		fontWeight: 'bold',
+		fontSize: 18,
+		width: '100%'
+	}
 }));
 
 function UserNavbarHeader(props) {
-	const user = useSelector(({ auth }) => auth.user);
-
 	const classes = useStyles();
 
 	return (
-		<AppBar
-			position="static"
-			className="flex flex-col items-center justify-center py-24 z-0 shadow-0"
-		>
-			<Typography className="uppercase py-24">
+		<div>
+			<ThemeButton />
+			<Typography className={classes.bill}>
 				Bills
 			</Typography>
 			<AccountButton className="my-16 p-8"/>
-			<Button className="my-16 p-8">
+			<Button className={classes.networkButton} disableRipple>
 				+ Add networks
 			</Button>
-		</AppBar>
+		</div>
 	);
 }
 

@@ -17,7 +17,7 @@ registerComponent('vertical-group', FuseNavVerticalGroup);
 registerComponent('vertical-collapse', FuseNavVerticalCollapse);
 registerComponent('vertical-item', FuseNavVerticalItem);
 registerComponent('vertical-link', FuseNavVerticalLink);
-registerComponent('vertical-divider', () => <Divider className="my-16" />);
+registerComponent('vertical-divider', () => <Divider className="my-16" style={{backgroundColor: '#E2E2EA'}}/>);
 
 const useStyles = makeStyles(theme => ({
 	navigation: {
