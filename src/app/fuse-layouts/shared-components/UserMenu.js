@@ -1,6 +1,7 @@
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
+import Card from '@material-ui/core/Card';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -23,7 +24,10 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
+    width: 800,
+    height: 600,
+    border: 0,
+    borderRadius: '20px 20px 0 0',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
   },
@@ -74,7 +78,24 @@ function UserMenu(props) {
 	    >
 	      <Fade in={open}>
 	        <div className={classes.paper}>
-	          <h2 id="transition-modal-title">User Profile modal</h2>
+        		<div className="flex flex-row py-8">
+							<Button className="min-h-40 min-w-40 rounded-10" onClick={handleClose}>
+								<Icon className="text-14">arrow_back_ios</Icon>
+								<div className="hidden md:flex flex-col mx-4 items-end">
+									<Typography component="span" className="text-14 font-bold pt-4">
+										Come back
+									</Typography>
+								</div>
+							</Button>
+        		</div>
+        		<div className="flex flex-col text-center">
+        			<Typography className="text-24 font-bold pb-16">Profile</Typography>
+							<Card className="w-full rounded-10 shadow">
+								<div className="p-16 flex flex-row flex-wrap items-end">
+									Profile info
+								</div>
+							</Card>
+        		</div>
 	        </div>
 	      </Fade>
 	    </Modal>
