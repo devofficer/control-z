@@ -21,6 +21,11 @@ function Widget8(props) {
 	return (
 		<Card className="w-full h-500 rounded-10 shadow">
 			<div className="px-32 py-16">
+				<div className="flex justify-between py-16">
+					<Typography className="h3 sm:h2 d-flex font-bold">Email marketing campaigns</Typography>
+					<Typography className="h3 sm:h2 d-flex">Upcoming campaigns</Typography>
+					<Typography className="h3 sm:h2 d-flex font-bold text-pink underline" color="red">View calendar</Typography>
+				</div>
 				<div className="w-full sm:w-1/3">
 					<Card>
 						<CardActionArea>

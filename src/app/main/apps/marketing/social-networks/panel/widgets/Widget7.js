@@ -21,10 +21,10 @@ function Widget7(props) {
 	return (
 		<Card className="w-full h-500 rounded-10 shadow">
 			<div className="px-32 py-16">
-				<div className="d-flex flex-row justify-content-between py-16">
-					<Typography className="h3 sm:h2 d-flex">Publications</Typography>
+				<div className="flex justify-between py-16">
+					<Typography className="h3 sm:h2 d-flex font-bold">Publications</Typography>
 					<Typography className="h3 sm:h2 d-flex">Upcoming publications</Typography>
-					<Typography className="h3 sm:h2 d-flex">View calendar</Typography>
+					<Typography className="h3 sm:h2 d-flex font-bold text-pink underline" color="red">View calendar</Typography>
 				</div>
 				<div className="w-full sm:w-1/3 rounded-10">
 					<img src="/material-ui-static/images/cards/contemplative-reptile.jpg" alt="pic"/>

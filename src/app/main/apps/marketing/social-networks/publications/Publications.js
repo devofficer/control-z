@@ -41,6 +41,14 @@ const ViewButton = withStyles((theme) => ({
   },
 }))(Button);
 
+const TabButton = withStyles((theme) => ({
+  root: {
+    color: '#A10081',
+    '&:hover': {
+    },
+  },
+}))(Button);
+
 const options = ['Create a merge commit', 'Squash and merge', 'Rebase and merge'];
 
 
@@ -81,22 +89,16 @@ function Publications () {
 	return (
 		<div className="w-full">
 			<div className="flex flex-1 flex-col min-w-0 container sm:p-8">
-				<div className="d-flex justify-content-between">
+				<div className="flex justify-between">
 					<Typography className="p-40 pb-8 text-36 font-600">
 						Publications
 					</Typography>
-					<Tabs
-		        value={value}
-		        onChange={handleChange}
-		        indicatorColor="primary"
-		        textColor="primary"
-		        centered
-		      >
-		        <Tab label="Published" disableRipple/>
-		        <Tab label="Scheduled" disableRipple/>
-		        <Tab label="Drafts" disableRipple/>
-		        <Tab label="Waiting" disableRipple/>
-		      </Tabs>
+					<div className="flex flex-row">
+		        <TabButton disableRipple>Published</TabButton>
+		        <TabButton disableRipple>Scheduled</TabButton>
+		        <TabButton disableRipple>Drafts</TabButton>
+		        <TabButton disableRipple>Waiting</TabButton>
+					</div>
 		      <NewButton variant="contained">+ New Post</NewButton>
 	      </div>
 
