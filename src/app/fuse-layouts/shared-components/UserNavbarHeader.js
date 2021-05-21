@@ -1,12 +1,14 @@
 import AppBar from '@material-ui/core/AppBar';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
 import Icon from '@material-ui/core/Icon';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+import Paper from '@material-ui/core/Paper';
 import clsx from 'clsx';
 import React from 'react';
 import { useSelector } from 'react-redux';
@@ -36,15 +38,99 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'center',
   },
   paper: {
-    backgroundColor: theme.palette.background.paper,
-    width: 800,
+    backgroundColor: '#ffffff',
+    width: 900,
     height: 600,
     border: 0,
     borderRadius: 10,
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
-  }
+  },
+  gridRoot: {
+  	flexGrow: 1
+  },
+  gridPaper: {
+  	height: 120,
+  	backgroundColor: '#ffffff',
+  	border: '2px solid #E2E2EA',
+  	borderRadius: 10
+  },
 }));
+
+const networks = [
+	{
+		title: 'Facebook',
+		icon: 'f',
+		color: '#1877F2'
+	},
+	{
+		title: 'Instagram',
+		icon: 'instagram',
+		color: '#F00073'
+	},
+	{
+		title: 'Youtube',
+		icon: 'youtube',
+		color: '#FF0000'
+	},
+	{
+		title: 'Twitter',
+		icon: 'twitter',
+		color: '#1DA1F2'
+	},
+	{
+		title: 'Tiktok',
+		icon: 'tiktok',
+		color: '#161722'
+	},
+	{
+		title: 'Google Business',
+		icon: 'google_business',
+		color: '#4285F4'
+	},
+	{
+		title: 'Pinterest',
+		icon: 'pinterest',
+		color: '#E60023'
+	},
+	{
+		title: 'Linkedin',
+		icon: 'linkedin',
+		color: '#2867B2'
+	},
+];
+
+const DeleteButton = withStyles((theme) => ({
+  root: {
+    color: '#00FFFF',
+    backgroundColor: '#00FFFF',
+    '&:hover': {
+      backgroundColor: '#00CCCC',
+    },
+  },
+}))(Button);
+
+const DisabledButton = withStyles((theme) => ({
+  root: {
+  	fontSize: 12,
+    color: '#FFFFFF',
+    backgroundColor: '#CCCCCC',
+    '&:hover': {
+      backgroundColor: '#CCCCCC',
+    },
+  },
+}))(Button);
+
+const AddButton = withStyles((theme) => ({
+  root: {
+  	fontSize: 12,
+    color: 'white',
+    backgroundColor: '#A10081',
+    '&:hover': {
+      backgroundColor: '#A10081',
+    },
+  },
+}))(Button);
 
 function UserNavbarHeader(props) {
   const classes = useStyles();
@@ -84,7 +170,7 @@ function UserNavbarHeader(props) {
 	      <Fade in={open}>
 	        <div className={classes.paper}>
         		<div className="flex flex-row py-8">
-							<Button className="min-h-40 min-w-40 rounded-10" onClick={handleClose}>
+							<Button className="min-h-40 min-w-40 rounded-10 text-black" onClick={handleClose}>
 								<Icon className="text-14">arrow_back_ios</Icon>
 								<div className="hidden md:flex flex-col mx-4 items-end">
 									<Typography component="span" className="text-14 font-bold pt-4">
@@ -94,12 +180,44 @@ function UserNavbarHeader(props) {
 							</Button>
         		</div>
         		<div className="flex flex-col text-center">
-        			<Typography className="text-24 font-bold pb-16">Add networks to account</Typography>
-							<Card className="w-full rounded-10 shadow">
-								<div className="p-16 flex flex-row flex-wrap items-end">
-									networks
-								</div>
-							</Card>
+        			<Typography className="text-24 font-bold pb-24">Add networks to account</Typography>
+    					<GridList className={classes.gridList} cellHeight={'auto'} cols={3} spacing={24}>
+			          {networks.map((net) => (
+        					<GridListTile key={net.title} cols={net.cols || 1}>
+			              <Paper className={classes.gridPaper} variant="outlined">
+			              	<div style={{
+										  	width: '100%-20px',
+										  	height: 3,
+										  	borderRadius: '0 0 10px 10px',
+										  	margin: '-1px 10px 0px 10px',
+										  	backgroundColor: net.color
+			              	}}/>
+			              	<div className="flex flex-row m-20 mb-10">
+	      								<img 
+													className="min-w-20" 
+													src={`assets/images/icons/${net.icon}.svg`} 
+													style={{
+														backgroundColor: net.color, 
+														borderRadius: "50%",
+														width: "32px",
+														height: "32px",
+														padding: "5px",
+													}} 
+													alt={net.title} 
+												/>
+												<div className="pl-20 text-left">
+													<Typography className="text-14 font-bold text-black">{net.title}</Typography>
+													<Typography className="text-10 text-gray">Network was not added</Typography>
+												</div>
+											</div>
+											<div className="flex flex-row ml-32">
+												<DisabledButton> Delete network </DisabledButton>
+												<AddButton> Add network </AddButton>
+											</div>
+			              </Paper>
+				          </GridListTile>
+		        	  ))}
+				      </GridList>
         		</div>
 	        </div>
 	      </Fade>

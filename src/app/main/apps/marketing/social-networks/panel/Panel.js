@@ -33,7 +33,7 @@ function Panel() {
 
 			<FuseAnimate animation="transition.slideUpIn" delay={200}>
 				<div className="flex flex-1 flex-col min-w-0 container sm:p-8">
-					<Typography className="p-40 pb-8 text-48 font-600">
+					<Typography className="p-40 pb-8 text-36 font-600">
 						Panel
 					</Typography>
 

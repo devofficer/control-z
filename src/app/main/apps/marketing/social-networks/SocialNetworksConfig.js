@@ -21,7 +21,7 @@ const SocialNetworksConfig = {
 		},
 		{
 			path: '/marketing/social/calendar',
-			component: React.lazy(() => import('./calendar/Calendar'))
+			component: React.lazy(() => import('./calendar/CalendarApp'))
 		},
 		{
 			path: '/marketing/social/messages',
