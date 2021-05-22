@@ -2,13 +2,11 @@ import { authRoles } from 'app/auth';
 import i18next from 'i18next';
 import DocumentationNavigation from '../main/documentation/DocumentationNavigation';
 
-import ar from './navigation-i18n/ar';
 import en from './navigation-i18n/en';
-import tr from './navigation-i18n/tr';
+import pt from './navigation-i18n/pt';
 
 i18next.addResourceBundle('en', 'navigation', en);
-i18next.addResourceBundle('tr', 'navigation', tr);
-i18next.addResourceBundle('ar', 'navigation', ar);
+i18next.addResourceBundle('pt', 'navigation', pt);
 
 const navigationConfig = [
 	{
@@ -24,6 +22,7 @@ const navigationConfig = [
 			{
 				id: 'panel',
 				title: 'Panel',
+				translate: 'Panel',
 				type: 'item',
 				icon: 'dashboard',
 				url: '/marketing/social/panel'
@@ -31,6 +30,7 @@ const navigationConfig = [
 			{
 				id: 'publications',
 				title: 'Publications',
+				translate: 'Publications',
 				type: 'item',
 				icon: 'dashboard',
 				url: '/marketing/social/publications'
@@ -38,6 +38,7 @@ const navigationConfig = [
 			{
 				id: 'calendar',
 				title: 'Calendar',
+				translate: 'Calendar',
 				type: 'item',
 				icon: 'today',
 				url: '/marketing/social/calendar'
@@ -45,6 +46,7 @@ const navigationConfig = [
 			{
 				id: 'messages',
 				title: 'Messages',
+				translate: 'Messages',
 				type: 'item',
 				icon: 'chat',
 				url: '/marketing/social/messages'
@@ -52,6 +54,7 @@ const navigationConfig = [
 			{
 				id: 'feeds',
 				title: 'Feeds',
+				translate: 'Feeds',
 				type: 'item',
 				icon: 'mail',
 				url: '/marketing/social/feeds'
@@ -59,6 +62,7 @@ const navigationConfig = [
 			{
 				id: 'reporting',
 				title: 'Reporting',
+				translate: 'Reporting',
 				type: 'item',
 				icon: 'reporting',
 				url: '/marketing/social/reporting'
@@ -74,6 +78,7 @@ const navigationConfig = [
 			{
 				id: 'campaigns',
 				title: 'Campaigns',
+				translate: 'Campaigns',
 				type: 'item',
 				icon: 'chat',
 				url: '/marketing/email/campaigns'
@@ -81,6 +86,7 @@ const navigationConfig = [
 			{
 				id: 'calendar',
 				title: 'Calendar',
+				translate: 'Calendar',
 				type: 'item',
 				icon: 'today',
 				url: '/marketing/email/calendar'
@@ -88,6 +94,7 @@ const navigationConfig = [
 			{
 				id: 'lists',
 				title: 'Lists',
+				translate: 'Lists',
 				type: 'item',
 				icon: 'lists',
 				url: '/marketing/email/lists'
@@ -95,6 +102,7 @@ const navigationConfig = [
 			{
 				id: 'reporting',
 				title: 'Reporting',
+				translate: 'Reporting',
 				type: 'item',
 				icon: 'reporting',
 				url: '/marketing/email/reporting'

@@ -17,7 +17,7 @@ const languages = [
 	},
 	{
 		id: 'pt',
-		title: 'Portuguese',
+		title: 'Português',
 		flag: 'pt'
 	}
 ];
