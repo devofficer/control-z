@@ -9,6 +9,12 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
+import {
+	marketingNavigationConfig,
+	managementNavigationConfig,
+	financialNavigationConfig
+} from 'app/fuse-configs/navigationConfig';
+import { setNavigation } from 'app/store/fuse/navigationSlice';
 
 const useStyles = makeStyles(theme => ({
 	selectButton: {
@@ -71,12 +77,28 @@ function ThemeButton(props) {
 		setMenu(null);
 	};
 
+	const dispatch = useDispatch();
+
 	function handleMenuChange(it) {
 		menuClose();
 		setItem({
 			title: it.title,
 			url: it.url
-		})
+		});
+
+		switch (it.title) {
+			case 'Marketing':
+				dispatch(setNavigation(marketingNavigationConfig));
+				break;
+			case 'Management':
+				dispatch(setNavigation(managementNavigationConfig));
+				break;
+			case 'Financial':
+				dispatch(setNavigation(financialNavigationConfig));
+				break;
+			default:
+				break
+		}
 	}
 
 	return (

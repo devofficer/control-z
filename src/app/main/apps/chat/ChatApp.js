@@ -129,8 +129,6 @@ function ChatApp(props) {
 
 	return (
 		<div className={clsx(classes.root)}>
-			<div className={classes.topBg} />
-
 			<div className={clsx(classes.contentCardWrapper, 'container')}>
 				<div className={classes.contentCard}>
 					<Hidden mdUp>

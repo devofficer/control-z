@@ -17,6 +17,16 @@ import GridListTile from '@material-ui/core/GridListTile';
 import _ from 'lodash';
 
 const useStyles = makeStyles(theme => ({
+  root: {
+    diplay: 'flex',
+    flex: '1 1 auto',
+    padding: '3rem 12rem'
+  },
+  paper: {
+  	backgroundColor: '#ffffff',
+  	borderRadius: 10,
+  	marginTop: -10
+  },
 }));
 
 const NewButton = withStyles((theme) => ({
@@ -33,24 +43,51 @@ const NewButton = withStyles((theme) => ({
 
 const ViewButton = withStyles((theme) => ({
   root: {
-    color: '#00FFFF',
-    backgroundColor: '#00FFFF',
-    '&:hover': {
-      backgroundColor: '#00CCCC',
-    },
-  },
-}))(Button);
-
-const TabButton = withStyles((theme) => ({
-  root: {
     color: '#A10081',
+    border: '1px solid #A10081',
+    borderRadius: 10,
+    fontWeight: 'bold',
+    margin: 'auto',
     '&:hover': {
     },
   },
 }))(Button);
 
-const options = ['Create a merge commit', 'Squash and merge', 'Rebase and merge'];
+const StyledTabs = withStyles({
+  indicator: {
+    display: 'flex',
+    justifyContent: 'center',
+    backgroundColor: 'transparent',
+    height: 5,
+    '& > span': {
+      maxWidth: 100,
+      width: '100%',
+      height: 10,
+      backgroundColor: '#A10081',
+	    borderRadius: 5,
+    },
+  },
+})((props) => <Tabs {...props} TabIndicatorProps={{ children: <span /> }} />);
 
+const StyledTab = withStyles((theme) => ({
+  root: {
+    textTransform: 'none',
+    color: '#000',
+    fontWeight: 'bold',
+    fontSize: theme.typography.pxToRem(15),
+    marginRight: theme.spacing(1),
+    '&:focus': {
+      opacity: 1,
+      color: '#A10081'
+    },
+    '&$selected': {
+      color: '#A10081',
+    },
+  },
+  selected: {}
+}))((props) => <Tab disableRipple {...props} />);
+
+const options = ['facebook', 'youtube', 'tiktok'];
 
 function Publications () {
 	const classes = useStyles();
@@ -63,7 +100,7 @@ function Publications () {
 
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
-  const [selectedIndex, setSelectedIndex] = React.useState(1);
+  const [selectedIndex, setSelectedIndex] = React.useState(0);
 
   const handleClick = () => {
     console.info(`You clicked ${options[selectedIndex]}`);
@@ -89,22 +126,22 @@ function Publications () {
 	return (
 		<div className="w-full">
 			<div className="flex flex-1 flex-col min-w-0 container sm:p-8">
-				<div className="flex justify-between">
-					<Typography className="p-40 pb-8 text-36 font-600">
+				<div className="flex justify-between p-40">
+					<Typography className="text-36 font-600">
 						Publications
 					</Typography>
-					<div className="flex flex-row">
-		        <TabButton disableRipple>Published</TabButton>
-		        <TabButton disableRipple>Scheduled</TabButton>
-		        <TabButton disableRipple>Drafts</TabButton>
-		        <TabButton disableRipple>Waiting</TabButton>
-					</div>
-		      <NewButton variant="contained">+ New Post</NewButton>
+					<StyledTabs value={value} onChange={handleChange} aria-label="styled tabs example">
+	          <StyledTab label="Published" />
+	          <StyledTab label="Scheduled" />
+	          <StyledTab label="Drafts" />
+	          <StyledTab label="Waiting" />
+	        </StyledTabs>
+		      <NewButton variant="contained" className="text-14 h-40">+ New Post</NewButton>
 	      </div>
 
-	      <div className="flex flex-row">
+	      <div className="flex flex-row px-40">
 	      	<ButtonGroup variant="contained" color="primary" ref={anchorRef} aria-label="split button">
-	          <Button onClick={handleClick}>{options[selectedIndex]}</Button>
+	          <Button onClick={handleClick}>Filtered by: {options[selectedIndex]}</Button>
 	          <Button
 	            color="primary"
 	            size="small"
@@ -125,7 +162,7 @@ function Publications () {
 	                transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom',
 	              }}
 	            >
-	              <Paper>
+	              <Paper style={{position: 'absolute', zIndex: 9999}}>
 	                <ClickAwayListener onClickAway={handleClose}>
 	                  <MenuList id="split-button-menu">
 	                    {options.map((option, index) => (
@@ -146,25 +183,47 @@ function Publications () {
 	        </Popper>
 	      </div>
 
-	      <div>
+	      <div className={classes.root}>
 					<GridList cellHeight={'auto'} cols={3} spacing={24}>
 						{_.times(6, () => (
     					<GridListTile cols={1}>
-								<img src="/material-ui-static/images/cards/contemplative-reptile.jpg" alt="pic"/>
-								<Typography className="p-16 pb-0">
-									Status:
-									<span className="text-green">Approved</span>
-			          </Typography>
-			          <Typography className="p-16 py-8">
-			          	Social networks:
-			          </Typography>
-			          <div className="flex flex-row p-16 py-8">
-			          	<Button style={{color: "red", borderRadius: "50%"}}>
-			          		Scheduled
-			        		</Button>
-				          <Typography className="font-600 py-8">
-				          	Jan 29, 2020 at 7:30 am
-				          </Typography>
+	    					<div>
+									<img 
+										src="/material-ui-static/images/cards/contemplative-reptile.jpg" 
+										style={{
+											borderRadius: '10px 10px 0 0',
+										}}
+										alt="pic"
+									/>
+				          <Paper className={classes.paper} variant="outlined">
+					          <Typography className="flex flex-row p-16 pt-24 pb-8">
+					          	Social networks:
+											<img 
+												className="min-w-20" 
+												src={`assets/images/icons/f.svg`} 
+												style={{
+													backgroundColor: '#1877F2', 
+													borderRadius: "50%",
+													width: "20px",
+													height: "20px",
+													padding: "2px",
+													marginLeft: 5
+												}} 
+												alt="facebook" 
+											/>
+					          </Typography>
+					          <div className="flex flex-row p-16 pt-0">
+					          	<Button style={{color: "green", borderRadius: "50%"}}>
+					          		Published
+					        		</Button>
+						          <Typography className="font-bold py-8">
+						          	Jan 29, 2020 at 7:30 am
+						          </Typography>
+					          </div>
+					          <div className="flex justify-center pb-20">
+						          <ViewButton>View publication report</ViewButton>
+					          </div>
+				          </Paper>
 			          </div>
 		          </GridListTile>
 						))}
