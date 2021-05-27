@@ -1,13 +1,10 @@
 import Button from '@material-ui/core/Button';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
 import MenuItem from '@material-ui/core/MenuItem';
 import Popover from '@material-ui/core/Popover';
 import Typography from '@material-ui/core/Typography';
 import Icon from '@material-ui/core/Icon';
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Icons from 'app/icons/Icons';
 import _ from 'lodash';
@@ -83,8 +80,6 @@ const accounts = [
 
 function AccountButton(props) {
 	const classes = useStyles();
-
-	const dispatch = useDispatch();
 
 	const [account, setAccount] = useState({
 		name: "Owl Store", 

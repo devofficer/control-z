@@ -1,18 +1,8 @@
 import React from 'react';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
-import Chat from '../../../chat/ChatApp';
-import clsx from 'clsx';
-import NetworksToolbar from '../common/NetworksToolbar';
-
-const useStyles = makeStyles(theme => ({
-  paper: {
-  	borderRadius: 10,
-  },
-}));
+import { withStyles } from '@material-ui/core/styles';
+import Icons from 'app/icons/Icons';
 
 const StyledTabs = withStyles({
   indicator: {
@@ -51,9 +41,7 @@ const StyledTab = withStyles((theme) => ({
   },
 }))((props) => <Tab {...props} />);
 
-function Messages () {
-	const classes = useStyles();
-
+function NetworksToolbar () {
 	const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -61,26 +49,17 @@ function Messages () {
   };
 
 	return (
-		<div className="w-full">
-			<div className="flex flex-1 flex-col min-w-0 container sm:p-8">
-				<div className="flex justify-between p-40">
-					<Typography className="text-36 font-600">
-						Messages
-					</Typography>
-	      </div>
-
-	      <Paper className="m-16 mx-40">
-	      	<Typography className="p-16">
-		      	Select the network you want to see comments and messages from
-	      	</Typography>
-
-					<NetworksToolbar />
-	      </Paper>
-
-	      <Chat />
-			</div>
-		</div>
+		<StyledTabs value={value} onChange={handleChange} variant="fullWidth" aria-label="styled tabs example">
+      <StyledTab label="Facebook" icon={<Icons value="f"/>} />
+      <StyledTab label="Instagram" icon={<Icons value="instagram"/>} />
+      <StyledTab label="Youtube" icon={<Icons value="youtube"/>} />
+      <StyledTab label="Twitter" icon={<Icons value="twitter"/>} disabled />
+      <StyledTab label="Tiktok" icon={<Icons value="tiktok"/>} disabled />
+      <StyledTab label="Google" icon={<Icons value="google_business"/>} disabled />
+      <StyledTab label="Pinterest" icon={<Icons value="pinterest"/>} disabled />
+      <StyledTab label="Linkedin" icon={<Icons value="linkedin"/>} disabled />
+    </StyledTabs>
 	)
 }
 
-export default Messages;
+export default NetworksToolbar;

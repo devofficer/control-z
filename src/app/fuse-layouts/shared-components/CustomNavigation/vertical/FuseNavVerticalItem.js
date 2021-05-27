@@ -51,7 +51,7 @@ function FuseNavVerticalItem(props) {
 
 	const theme = useTheme();
 	const mdDown = useMediaQuery(theme.breakpoints.down('md'));
-	const { item, nestedLevel } = props;
+	const { item } = props;
 	const classes = useStyles();
 
 	const hasPermission = useMemo(() => FuseUtils.hasPermission(item.auth, userRole), [item.auth, userRole]);

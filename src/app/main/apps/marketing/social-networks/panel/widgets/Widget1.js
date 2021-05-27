@@ -6,9 +6,7 @@ import Popover from '@material-ui/core/Popover';
 import Typography from '@material-ui/core/Typography';
 import Icon from '@material-ui/core/Icon';
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
+import { useDispatch } from 'react-redux';
 import Icons from 'app/icons/Icons';
 
 const networks = [

@@ -1,4 +1,3 @@
-import AppBar from '@material-ui/core/AppBar';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -9,9 +8,7 @@ import Icon from '@material-ui/core/Icon';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import Paper from '@material-ui/core/Paper';
-import clsx from 'clsx';
 import React from 'react';
-import { useSelector } from 'react-redux';
 import AccountButton from './AccountButton'
 import ThemeButton from './ThemeButton'
 import Icons from 'app/icons/Icons';

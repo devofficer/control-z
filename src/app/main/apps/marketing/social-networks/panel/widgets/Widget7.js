@@ -2,12 +2,7 @@ import React from 'react';
 import Divider from '@material-ui/core/Divider';
 import Card from '@material-ui/core/Card';
 import Icon from '@material-ui/core/Icon';
-import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
@@ -96,7 +91,7 @@ function Widget7(props) {
 								/>
 		          </Typography>
 		          <div className="flex flex-row p-16 py-8">
-		          	<Button style={{color: "red", borderRadius: "50%"}}>
+		          	<Button style={{color: "#FF6B17", backgroundColor: '#FF6B171A', borderRadius: "50%"}}>
 		          		<Icon>schedule</Icon>
 		          		Scheduled
 		        		</Button>

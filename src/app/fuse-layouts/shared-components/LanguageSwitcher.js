@@ -6,7 +6,6 @@ import Popover from '@material-ui/core/Popover';
 import Typography from '@material-ui/core/Typography';
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { changeLanguage } from 'app/store/i18nSlice';
 
 const languages = [

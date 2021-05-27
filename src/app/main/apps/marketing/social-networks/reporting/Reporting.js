@@ -1,21 +1,15 @@
-import React from 'react';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
-import Grow from '@material-ui/core/Grow';
 import Paper from '@material-ui/core/Paper';
-import Popper from '@material-ui/core/Popper';
-import MenuItem from '@material-ui/core/MenuItem';
-import MenuList from '@material-ui/core/MenuList';
-import GridList from '@material-ui/core/GridList';
-import GridListTile from '@material-ui/core/GridListTile';
-import Button from '@material-ui/core/Button';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
-import clsx from 'clsx';
-import Icons from 'app/icons/Icons';
+import { makeStyles } from '@material-ui/core/styles';
+import NetworksToolbar from '../common/NetworksToolbar';
+import { StyledTabs, StyledTab } from '../../../common/StyledTabs';
+import withReducer from 'app/store/withReducer';
+import reducer from './store';
+import { getWidgets, selectWidgets } from './store/widgetsSlice';
+import Widget1 from './widgets/Widget1';
+import _ from '@lodash';
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -23,50 +17,25 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const StyledTabs = withStyles({
-  indicator: {
-    display: 'flex',
-    justifyContent: 'center',
-    backgroundColor: 'transparent',
-    '& > span': {
-	    backgroundColor: 'transparent',
-    },
-  },
-})((props) => <Tabs {...props} TabIndicatorProps={{ children: <span /> }} />);
-
-const StyledTab = withStyles((theme) => ({
-  root: {
-    textTransform: 'none',
-    color: '#000',
-    backgroundColor: '#c3c3c3',
-    fontWeight: 'bold',
-    padding: 10,
-    fontSize: theme.typography.pxToRem(15),
-    '&:focus': {
-      opacity: 1,
-    },
-    '&$selected': {
-    },
-  },
-  selected: {},
-  wrapper: {
-    flexDirection: "row",
-    alignItems: 'end',
-    // justifyContent: "space-evenly"
-  },
-  labelIcon: {
-    minHeight: 30,
-  },
-}))((props) => <Tab {...props} />);
-
 function Reporting () {
 	const classes = useStyles();
 
-	const [value, setValue] = React.useState(0);
+	const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+	const dispatch = useDispatch();
+	const widgets = useSelector(selectWidgets);
+
+	useEffect(() => {
+		dispatch(getWidgets());
+	}, [dispatch]);
+
+	if (_.isEmpty(widgets)) {
+		return null;
+	}
 
 	return (
 		<div className="w-full">
@@ -79,23 +48,27 @@ function Reporting () {
 
 	      <Paper className="m-16 mx-40">
 	      	<Typography className="p-16">
-		      	Select the network you want to see comments and messages from
+		      	Select the network you want to see graphs and reports
 	      	</Typography>
 
-					<StyledTabs value={value} onChange={handleChange} variant="fullWidth" aria-label="styled tabs example">
-	          <StyledTab label="Facebook" icon={<Icons value="f"/>} />
-	          <StyledTab label="Instagram" icon={<Icons value="instagram"/>} />
-	          <StyledTab label="Youtube" icon={<Icons value="youtube"/>} />
-	          <StyledTab label="Twitter" icon={<Icons value="twitter"/>} disabled />
-	          <StyledTab label="Tiktok" icon={<Icons value="tiktok"/>} disabled />
-	          <StyledTab label="Google business" icon={<Icons value="google_business"/>} disabled />
-	          <StyledTab label="Pinterest" icon={<Icons value="pinterest"/>} disabled />
-	          <StyledTab label="Linkedin" icon={<Icons value="linkedin"/>} disabled />
-	        </StyledTabs>
+					<NetworksToolbar />
 	      </Paper>
+
+	      <div className="flex justify-center">
+					<StyledTabs value={value} onChange={handleChange} aria-label="styled tabs example">
+	          <StyledTab label="Growth" />
+	          <StyledTab label="Reach" />
+	          <StyledTab label="Engagement" />
+	          <StyledTab label="Contested" />
+	        </StyledTabs>
+        </div>
+
+				<div className="widget flex w-full sm:w-1/2 p-12">
+					<Widget1 widget={widgets.widget6} />
+				</div>
 			</div>
 		</div>
 	)
 }
 
-export default Reporting;
+export default withReducer('reporting', reducer)(Reporting);

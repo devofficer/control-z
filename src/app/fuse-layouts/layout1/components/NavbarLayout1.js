@@ -1,11 +1,5 @@
 import FuseScrollbars from '@fuse/core/FuseScrollbars';
-import AppBar from '@material-ui/core/AppBar';
-import Hidden from '@material-ui/core/Hidden';
-import Icon from '@material-ui/core/Icon';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Logo from 'app/fuse-layouts/shared-components/Logo';
-import NavbarFoldedToggleButton from 'app/fuse-layouts/shared-components/NavbarFoldedToggleButton';
-import NavbarMobileToggleButton from 'app/fuse-layouts/shared-components/NavbarMobileToggleButton';
 import Navigation from 'app/fuse-layouts/shared-components/Navigation';
 import UserNavbarHeader from 'app/fuse-layouts/shared-components/UserNavbarHeader';
 import clsx from 'clsx';
@@ -39,7 +33,6 @@ const useStyles = makeStyles(theme => ({
 
 function NavbarLayout1(props) {
 	const classes = useStyles();
-	const theme = useTheme();
 
 	return (
 		<div className={clsx('flex flex-col overflow-hidden h-full', classes.root, props.className)}>

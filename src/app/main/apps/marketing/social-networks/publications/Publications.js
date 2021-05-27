@@ -1,6 +1,4 @@
 import React from 'react';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
@@ -15,6 +13,7 @@ import MenuList from '@material-ui/core/MenuList';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import Icons from 'app/icons/Icons';
+import { StyledTabs, StyledTab } from '../../../common/StyledTabs';
 import _ from 'lodash';
 
 const useStyles = makeStyles(theme => ({
@@ -53,40 +52,6 @@ const ViewButton = withStyles((theme) => ({
     },
   },
 }))(Button);
-
-const StyledTabs = withStyles({
-  indicator: {
-    display: 'flex',
-    justifyContent: 'center',
-    backgroundColor: 'transparent',
-    height: 5,
-    '& > span': {
-      maxWidth: 100,
-      width: '100%',
-      height: 10,
-      backgroundColor: '#A10081',
-	    borderRadius: 5,
-    },
-  },
-})((props) => <Tabs {...props} TabIndicatorProps={{ children: <span /> }} />);
-
-const StyledTab = withStyles((theme) => ({
-  root: {
-    textTransform: 'none',
-    color: '#000',
-    fontWeight: 'bold',
-    fontSize: theme.typography.pxToRem(15),
-    marginRight: theme.spacing(1),
-    '&:focus': {
-      opacity: 1,
-      color: '#A10081'
-    },
-    '&$selected': {
-      color: '#A10081',
-    },
-  },
-  selected: {}
-}))((props) => <Tab disableRipple {...props} />);
 
 const options = ['facebook', 'youtube', 'tiktok'];
 
@@ -202,7 +167,7 @@ function Publications () {
 											<Icons value="f" width={20} padding={2} />
 					          </Typography>
 					          <div className="flex flex-row p-16 pt-0">
-					          	<Button style={{color: "green", borderRadius: "50%"}}>
+					          	<Button style={{color: "#3DD598", backgroundColor: '#3DD5981A', borderRadius: "50%"}}>
 					          		Published
 					        		</Button>
 						          <Typography className="font-bold py-8">

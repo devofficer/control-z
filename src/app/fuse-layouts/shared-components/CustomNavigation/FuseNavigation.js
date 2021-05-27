@@ -49,7 +49,7 @@ const useStyles = makeStyles(theme => ({
 
 function FuseNavigation(props) {
 	const classes = useStyles(props);
-	const { navigation, layout, active, dense, className } = props;
+	const { navigation, active, dense, className } = props;
 
 	const verticalNav = (
 		<List
