@@ -6,6 +6,9 @@ const SocialNetworksConfig = {
 			config: {
 				rightSidePanel: {
 					display: false
+				},
+				footer: {
+					display: false
 				}
 			}
 		}

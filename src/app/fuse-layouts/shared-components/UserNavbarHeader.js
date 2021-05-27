@@ -14,6 +14,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import AccountButton from './AccountButton'
 import ThemeButton from './ThemeButton'
+import Icons from 'app/icons/Icons';
 
 const useStyles = makeStyles(theme => ({
 	bill: {
@@ -60,43 +61,35 @@ const useStyles = makeStyles(theme => ({
 const networks = [
 	{
 		title: 'Facebook',
-		icon: 'f',
-		color: '#1877F2'
+		icon: 'f'
 	},
 	{
 		title: 'Instagram',
-		icon: 'instagram',
-		color: '#F00073'
+		icon: 'instagram'
 	},
 	{
 		title: 'Youtube',
-		icon: 'youtube',
-		color: '#FF0000'
+		icon: 'youtube'
 	},
 	{
 		title: 'Twitter',
-		icon: 'twitter',
-		color: '#1DA1F2'
+		icon: 'twitter'
 	},
 	{
 		title: 'Tiktok',
-		icon: 'tiktok',
-		color: '#161722'
+		icon: 'tiktok'
 	},
 	{
 		title: 'Google Business',
-		icon: 'google_business',
-		color: '#4285F4'
+		icon: 'google_business'
 	},
 	{
 		title: 'Pinterest',
-		icon: 'pinterest',
-		color: '#E60023'
+		icon: 'pinterest'
 	},
 	{
 		title: 'Linkedin',
-		icon: 'linkedin',
-		color: '#2867B2'
+		icon: 'linkedin'
 	},
 ];
 
@@ -193,18 +186,7 @@ function UserNavbarHeader(props) {
 										  	backgroundColor: net.color
 			              	}}/>
 			              	<div className="flex flex-row m-20 mb-10">
-	      								<img 
-													className="min-w-20" 
-													src={`assets/images/icons/${net.icon}.svg`} 
-													style={{
-														backgroundColor: net.color, 
-														borderRadius: "50%",
-														width: "32px",
-														height: "32px",
-														padding: "5px",
-													}} 
-													alt={net.title} 
-												/>
+	      								<Icons value={net.icon} width={32} />
 												<div className="pl-20 text-left">
 													<Typography className="text-14 font-bold text-black">{net.title}</Typography>
 													<Typography className="text-10 text-gray">Network was not added</Typography>

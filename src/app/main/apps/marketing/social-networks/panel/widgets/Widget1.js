@@ -9,48 +9,40 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-
+import Icons from 'app/icons/Icons';
 
 const networks = [
 	{
 		title: 'Facebook',
-		icon: 'f',
-		color: '#1877F2'
+		icon: 'f'
 	},
 	{
 		title: 'Instagram',
-		icon: 'instagram',
-		color: '#F00073'
+		icon: 'instagram'
 	},
 	{
 		title: 'Youtube',
-		icon: 'youtube',
-		color: '#FF0000'
+		icon: 'youtube'
 	},
 	{
 		title: 'Twitter',
-		icon: 'twitter',
-		color: '#1DA1F2'
+		icon: 'twitter'
 	},
 	{
 		title: 'Tiktok',
-		icon: 'tiktok',
-		color: '#161722'
+		icon: 'tiktok'
 	},
 	{
 		title: 'Google Business',
-		icon: 'google_business',
-		color: '#4285F4'
+		icon: 'google_business'
 	},
 	{
 		title: 'Pinterest',
-		icon: 'pinterest',
-		color: '#E60023'
+		icon: 'pinterest'
 	},
 	{
 		title: 'Linkedin',
-		icon: 'linkedin',
-		color: '#2867B2'
+		icon: 'linkedin'
 	},
 ];
 
@@ -61,7 +53,6 @@ function Widget1(props) {
 	const [icon, setIcon] = useState({
 		title: "Facebook", 
 		icon: "f",
-		color: "#1877F2"
 	});
 
 	const [menu, setMenu] = useState(null);
@@ -87,17 +78,7 @@ function Widget1(props) {
 	return (
 		<>
 			<Button className="h-32 min-w-240" variant="outlined" onClick={networkMenuClick}>
-				<img
-					src={"assets/images/icons/" + icon.icon + ".svg"}
-					style={{
-						backgroundColor: icon.color,
-						borderRadius: "50%",
-						width: "24px",
-						height: "24px",
-						padding: "5px"
-					}}
-					alt={icon.title}
-				/>
+				<Icons value="f" />
 
 				<Typography className="mx-4 font-bold text-12" color="textSecondary">
 					{icon.title}
@@ -125,18 +106,7 @@ function Widget1(props) {
 				{networks.map(net => (
 					<MenuItem key={net.title} onClick={() => handleNetworkChange(net)}>
 						<ListItemIcon className="min-w-40">
-							<img 
-								className="min-w-20" 
-								src={`assets/images/icons/${net.icon}.svg`} 
-								style={{
-									backgroundColor: net.color, 
-									borderRadius: "50%",
-									width: "24px",
-									height: "24px",
-									padding: "5px"
-								}} 
-								alt={net.title} 
-							/>
+							<Icons value={net.icon} />
 						</ListItemIcon>
 						<ListItemText primary={net.title} />
 					</MenuItem>

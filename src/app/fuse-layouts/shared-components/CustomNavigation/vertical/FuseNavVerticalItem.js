@@ -16,6 +16,7 @@ import FuseNavBadge from '../FuseNavBadge';
 const useStyles = makeStyles(theme => ({
 	item: props => ({
 		height: 40,
+		color: '#000',
 		'&.active': {
 			color: "#A10081",
 			fontWeight: 'bolder',

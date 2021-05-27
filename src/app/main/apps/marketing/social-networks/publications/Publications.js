@@ -14,6 +14,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
+import Icons from 'app/icons/Icons';
 import _ from 'lodash';
 
 const useStyles = makeStyles(theme => ({
@@ -198,19 +199,7 @@ function Publications () {
 				          <Paper className={classes.paper} variant="outlined">
 					          <Typography className="flex flex-row p-16 pt-24 pb-8">
 					          	Social networks:
-											<img 
-												className="min-w-20" 
-												src={`assets/images/icons/f.svg`} 
-												style={{
-													backgroundColor: '#1877F2', 
-													borderRadius: "50%",
-													width: "20px",
-													height: "20px",
-													padding: "2px",
-													marginLeft: 5
-												}} 
-												alt="facebook" 
-											/>
+											<Icons value="f" width={20} padding={2} />
 					          </Typography>
 					          <div className="flex flex-row p-16 pt-0">
 					          	<Button style={{color: "green", borderRadius: "50%"}}>

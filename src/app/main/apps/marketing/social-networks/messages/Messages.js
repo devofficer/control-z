@@ -15,13 +15,20 @@ import GridListTile from '@material-ui/core/GridListTile';
 import Chat from '../../../chat/ChatApp';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
+import clsx from 'clsx';
+import Icons from 'app/icons/Icons';
+
+const useStyles = makeStyles(theme => ({
+  paper: {
+  	borderRadius: 10,
+  },
+}));
 
 const StyledTabs = withStyles({
   indicator: {
     display: 'flex',
     justifyContent: 'center',
     backgroundColor: 'transparent',
-    height: 5,
     '& > span': {
 	    backgroundColor: 'transparent',
     },
@@ -34,6 +41,7 @@ const StyledTab = withStyles((theme) => ({
     color: '#000',
     backgroundColor: '#c3c3c3',
     fontWeight: 'bold',
+    padding: 10,
     fontSize: theme.typography.pxToRem(15),
     '&:focus': {
       opacity: 1,
@@ -41,10 +49,20 @@ const StyledTab = withStyles((theme) => ({
     '&$selected': {
     },
   },
-  selected: {}
-}))((props) => <Tab disableRipple {...props} />);
+  selected: {},
+  wrapper: {
+    flexDirection: "row",
+    alignItems: 'end',
+    // justifyContent: "space-evenly"
+  },
+  labelIcon: {
+    minHeight: 30,
+  },
+}))((props) => <Tab {...props} />);
 
 function Messages () {
+	const classes = useStyles();
+
 	const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -65,11 +83,15 @@ function Messages () {
 		      	Select the network you want to see comments and messages from
 	      	</Typography>
 
-					<StyledTabs value={value} onChange={handleChange} aria-label="styled tabs example">
-	          <StyledTab label="Published" />
-	          <StyledTab label="Scheduled" />
-	          <StyledTab label="Drafts" />
-	          <StyledTab label="Waiting" />
+					<StyledTabs value={value} onChange={handleChange} variant="fullWidth" aria-label="styled tabs example">
+	          <StyledTab label="Facebook" icon={<Icons value="f"/>} />
+	          <StyledTab label="Instagram" icon={<Icons value="instagram"/>} />
+	          <StyledTab label="Youtube" icon={<Icons value="youtube"/>} />
+	          <StyledTab label="Twitter" icon={<Icons value="twitter"/>} disabled />
+	          <StyledTab label="Tiktok" icon={<Icons value="tiktok"/>} disabled />
+	          <StyledTab label="Google business" icon={<Icons value="google_business"/>} disabled />
+	          <StyledTab label="Pinterest" icon={<Icons value="pinterest"/>} disabled />
+	          <StyledTab label="Linkedin" icon={<Icons value="linkedin"/>} disabled />
 	        </StyledTabs>
 	      </Paper>
 

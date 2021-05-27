@@ -9,6 +9,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
+import Icons from 'app/icons/Icons';
 import _ from 'lodash';
 
 const useStyles = makeStyles(theme => ({
@@ -46,16 +47,6 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-const networkBgColor = {
-	f: '#1877F2',
-	instagram: '#F00073',
-	youtube: '#FF0000',
-	twitter: '#1DA1F2',
-	tiktok: '#161722',
-	google_business: '#4285F4',
-	pinterest: '#E60023',
-	linkedin: '#2867B2'
-}
 const accounts = [
 	{
 		name: "Owl Store", 
@@ -146,18 +137,7 @@ function AccountButton(props) {
 					</Typography>
 					<div className="flex flex-start pb-5">
 						{account.networks.map(it => (
-							<img
-								src={"assets/images/icons/" + it + ".svg"}
-								style={{
-									backgroundColor: networkBgColor[it],
-									borderRadius: '50%',
-									width: 15,
-									height: 15,
-									padding: 1,
-									margin: 1
-								}}
-								alt={it}
-							/>
+							<Icons value={it} width={15} padding={1} margin={1} />
 						))}
 						{_.times(8-account.networks.length, () => (
 							<div style={{background: '#E1E1E1', width: 15, height: 15, borderRadius: '50%', margin: 1}}></div>
@@ -206,18 +186,7 @@ function AccountButton(props) {
 							</Typography>
 							<div className="flex flex-start">
 								{it.networks.map(it => (
-									<img
-										src={"assets/images/icons/" + it + ".svg"}
-										style={{
-											backgroundColor: networkBgColor[it],
-											borderRadius: '50%',
-											width: 15,
-											height: 15,
-											padding: 1,
-											margin: 1
-										}}
-										alt={it}
-									/>
+									<Icons value={it} width={15} padding={1} margin={1} />
 								))}
 								{_.times(8-it.networks.length, () => (
 									<div style={{background: '#E1E1E1', width: 15, height: 15, borderRadius: '50%', margin: 1}}></div>
